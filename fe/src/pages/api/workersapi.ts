@@ -1,10 +1,8 @@
 import axios from "axios";
 import getConfig from "next/config";
 
-// import getConfig from "next/config";
-
-// const  publicRuntimeConfig  = getConfig();
-const baseURL = process.env.CLOUDFLARE_WORKER_BASE_URL
+const { publicRuntimeConfig } = getConfig();
+const baseURL = publicRuntimeConfig.CLOUDFLARE_WORKER_BASE_URL;
 
 const api = axios.create({
   withCredentials: true, // add this option to include cookies in requests
@@ -36,5 +34,3 @@ export const history = async (postData: any) => {
   const response = await api.post("/api/history", postData);
   return response.data;
 };
-
-export const runtime = 'edge';

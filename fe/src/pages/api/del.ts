@@ -4,10 +4,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import getConfig from "next/config";
 
-// import getConfig from "next/config";
-
-// const  publicRuntimeConfig  = getConfig();
-const baseURL = process.env.CLOUDFLARE_WORKER_BASE_URL
+const { publicRuntimeConfig } = getConfig();
+const baseURL = publicRuntimeConfig.CLOUDFLARE_WORKER_BASE_URL;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -29,4 +27,3 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
-export const runtime = 'edge';
