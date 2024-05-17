@@ -34,3 +34,5 @@ export const history = async (postData: any) => {
   const response = await api.post("/api/history", postData);
   return response.data;
 };
+
+export const runtime = 'edge';
